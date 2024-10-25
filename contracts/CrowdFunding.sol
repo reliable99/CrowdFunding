@@ -14,10 +14,10 @@ contract CrowdFunding {
     }
 
     receive() external payable {
-        contribute(msg.value);
+        contributeFund(msg.value);
     }
 
-    function contribute(uint256 _amount) public payable {
+    function contributeFund(uint256 _amount) public payable {
         require(raisedAmount < goal, "Goal already reached");
         require(_amount > 0, "Contribution amount must be greater than 0");
 
@@ -36,7 +36,7 @@ contract CrowdFunding {
         }
     }
 
-    function withdraw() public {
+    function withdrawFund() public {
         require(msg.sender == owner, "Only the owner can withdraw");
         require(raisedAmount >= goal, "Goal not reached");
 
